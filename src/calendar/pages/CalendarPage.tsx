@@ -7,6 +7,7 @@ import { addHours } from "date-fns/esm";
 import { getMessagesEs } from "../../helpers/getMessages";
 import CalendarEvent from "../components/CalendarEvent";
 import CalendarModal from "./CalendarModal";
+import { useUiStore } from "../../hooks/useUiStore";
 
 const events = [
   {
@@ -22,6 +23,7 @@ const events = [
   },
 ];
 function CalendarPage() {
+  const { openDateModal } = useUiStore();
   const [lastView, setLastView] = useState<string | null>(
     localStorage.getItem("lastView") || ""
   );
@@ -42,9 +44,6 @@ function CalendarPage() {
     };
   };
 
-  const onDoubleClick = (event: object) => {
-    console.log({ doubleClick: event });
-  };
   const onSelect = (event: object) => {
     console.log({ click: event });
   };
@@ -66,7 +65,7 @@ function CalendarPage() {
         messages={getMessagesEs()}
         eventPropGetter={eventStyleGetter}
         components={{ event: CalendarEvent }}
-        onDoubleClickEvent={onDoubleClick}
+        onDoubleClickEvent={openDateModal}
         onSelectEvent={onSelect}
         onView={onViewChanged}
       />
