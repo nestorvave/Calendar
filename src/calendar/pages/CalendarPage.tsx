@@ -1,29 +1,19 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import Navbar from "../components/Navbar";
 import "react-big-calendar/lib/css/react-big-calendar.css";
 import { localizer } from "../../helpers/calendarLocalizer";
 import { Calendar } from "react-big-calendar";
-import { addHours } from "date-fns/esm";
 import { getMessagesEs } from "../../helpers/getMessages";
 import CalendarEvent from "../components/CalendarEvent";
-import CalendarModal from "./CalendarModal";
+import CalendarModal from "../components/CalendarModal";
 import { useUiStore } from "../../hooks/useUiStore";
+import { useCalendarStore } from "../../hooks/useCalendarStore";
+import FabAddNew from "../components/FabAddNew";
+import FabDelete from "../components/FabDelete";
 
-const events = [
-  {
-    title: "Cumple hoy",
-    notes: "hay que comprar",
-    start: new Date(),
-    end: addHours(new Date(), 2),
-    bgColor: "#fafafa",
-    user: {
-      _id: "123",
-      name: "Nestor",
-    },
-  },
-];
 function CalendarPage() {
   const { openDateModal } = useUiStore();
+  const { events, setActiveEvent, hasEvenetSelected } = useCalendarStore();
   const [lastView, setLastView] = useState<string | null>(
     localStorage.getItem("lastView") || ""
   );
@@ -45,7 +35,7 @@ function CalendarPage() {
   };
 
   const onSelect = (event: object) => {
-    console.log({ click: event });
+    setActiveEvent(event);
   };
   const onViewChanged = (event: string) => {
     localStorage.setItem("lastView", event);
@@ -70,6 +60,8 @@ function CalendarPage() {
         onView={onViewChanged}
       />
       <CalendarModal />
+      <FabAddNew />
+      {hasEvenetSelected && <FabDelete />}
     </>
   );
 }

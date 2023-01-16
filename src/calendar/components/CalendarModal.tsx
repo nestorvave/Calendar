@@ -1,5 +1,5 @@
 import { addHours } from "date-fns/esm";
-import React, { useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import Modal from "react-modal";
 import DatePicker, { registerLocale } from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
@@ -8,6 +8,7 @@ import { differenceInSeconds } from "date-fns";
 import Swal from "sweetalert2";
 import "sweetalert2/dist/sweetalert2.min.css";
 import { useUiStore } from "../../hooks/useUiStore";
+import { useCalendarStore } from "../../hooks/useCalendarStore";
 
 registerLocale("es", es);
 
@@ -31,41 +32,54 @@ interface IForm {
 function CalendarModal() {
   const { isDateModalOpen, closeDateModal } = useUiStore();
   const [formSubmitted, setFormSubmitted] = useState<boolean>(false);
+  const { activeEvent, startSavingEvent } = useCalendarStore();
   const [formValues, setFormValues] = useState<IForm>({
-    title: "Nestor",
-    notes: "Hola",
+    title: "",
+    notes: "",
     start: new Date(),
     end: addHours(new Date(), 2),
   });
+  
   const onInputChange = (event: any) => {
     setFormValues({
       ...formValues,
       [event.target.name]: event.target.value,
     });
   };
+
   const onDateChanged = (event: Date, changing: string) => {
     setFormValues({
       ...formValues,
       [changing]: event,
     });
   };
-  const onSubmit = (event: any) => {
+
+  const onSubmit = async (event: any) => {
     event.preventDefault();
     setFormSubmitted(true);
     const difference = differenceInSeconds(formValues.end, formValues.start);
-    console.log(difference);
     if (isNaN(difference) || difference <= 0) {
       Swal.fire("Fchas incorrectas. Ingrese fechas correctas", "error");
       console.log("Error en fechas");
       return;
     }
     if (formValues.title.length <= 0) return;
-    console.log(formValues);
+    await startSavingEvent(formValues);
+    closeDateModal();
+    setFormSubmitted(false);
   };
+
   const titleClass = useMemo(() => {
     if (!formSubmitted) return "";
     return formValues.title.length > 0 ? "is-valid" : "is-invalid";
   }, [formValues.title, formSubmitted]);
+
+  useEffect(() => {
+    if (activeEvent !== null) {
+      setFormValues(activeEvent);
+    }
+  }, [activeEvent]);
+
   return (
     <Modal
       isOpen={isDateModalOpen}
