@@ -30,18 +30,6 @@ const tempEvent = [
       name: "Nestor",
     },
   },
-  {
-    _id: new Date().getTime(),
-    title: "Cumple hoy",
-    notes: "hay que comprar",
-    start: new Date(),
-    end: addHours(new Date(), 2),
-    bgColor: "#fafafa",
-    user: {
-      _id: "123",
-      name: "Nestor",
-    },
-  },
 ];
 const initialState: IUiInitialState = {
   events: tempEvent,

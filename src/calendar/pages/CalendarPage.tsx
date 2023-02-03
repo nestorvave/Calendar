@@ -48,7 +48,6 @@ function CalendarPage() {
         culture="es"
         localizer={localizer}
         events={events}
-        defaultView={lastView !== null ? lastView : undefined}
         startAccessor="start"
         endAccessor="end"
         style={{ height: "92vh" }}
