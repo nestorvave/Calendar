@@ -393,6 +393,11 @@
   dependencies:
     dequal "^2.0.2"
 
+"@types/date-arithmetic@*":
+  version "4.1.1"
+  resolved "https://registry.yarnpkg.com/@types/date-arithmetic/-/date-arithmetic-4.1.1.tgz#03bd30047b71d6eab66f0f03cb14289479ca277a"
+  integrity sha512-o9ILUTMSRiOC73o7h30mgLpuDwOJWqMHZfnEIwNQlfZsGY6Kw2gK5Gz6nXAjNt9zm3Qpr12pM4FDqssfdtBzGA==
+
 "@types/hoist-non-react-statics@^3.3.1":
   version "3.3.1"
   resolved "https://registry.yarnpkg.com/@types/hoist-non-react-statics/-/hoist-non-react-statics-3.3.1.tgz#1124aafe5118cb591977aeb1ceaaed1070eb039f"
@@ -406,11 +411,12 @@
   resolved "https://registry.npmjs.org/@types/prop-types/-/prop-types-15.7.5.tgz"
   integrity sha512-JCB8C6SnDoQf0cNycqd/35A7MjcnK+ZTqE7judS6o7utxUCg6imJg3QK2qzHKszlTjcj2cn+NwMB2i96ubpj7w==
 
-"@types/react-big-calendar@^0.38.3":
-  version "0.38.3"
-  resolved "https://registry.npmjs.org/@types/react-big-calendar/-/react-big-calendar-0.38.3.tgz"
-  integrity sha512-Rpj9enshVvPf4k1E+Ys55uNQMctfNZgoxXymeXCLZisTuaJ/+xG8xGJ6P4Ma6lOaqd7s+jFJpH3eGV4b3Kdk6Q==
+"@types/react-big-calendar@^0.38.4":
+  version "0.38.4"
+  resolved "https://registry.yarnpkg.com/@types/react-big-calendar/-/react-big-calendar-0.38.4.tgz#e13981c7b2555470b108259c2aa3df3dbe466f7b"
+  integrity sha512-6sorJYTTlHjqCeqpJ1FdSDkdNJ8tHCesQDwZ+NJFt+Qz86CTVFagFd9rAH4XRPM3i3R7fDW+0/IT2j9B0bUJaw==
   dependencies:
+    "@types/date-arithmetic" "*"
     "@types/prop-types" "*"
     "@types/react" "*"
 
@@ -795,7 +801,7 @@ prop-types@^15.7.2, prop-types@^15.8.1:
 
 react-big-calendar@^1.5.2:
   version "1.5.2"
-  resolved "https://registry.npmjs.org/react-big-calendar/-/react-big-calendar-1.5.2.tgz"
+  resolved "https://registry.yarnpkg.com/react-big-calendar/-/react-big-calendar-1.5.2.tgz#caf9c68d41bfa5bf85903ba9845a755ae1fba549"
   integrity sha512-qr34KSvdYrGYQ8WLbyyXXUGzpBLRhBTOMKdt7s/o0eRqw2s9WWGlcQN9yy4721XDU9BfRnKAyR2xxNOs5PvMaQ==
   dependencies:
     "@babel/runtime" "^7.18.6"

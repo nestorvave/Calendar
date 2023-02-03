@@ -15,7 +15,7 @@ function CalendarPage() {
   const { openDateModal } = useUiStore();
   const { events, setActiveEvent, hasEvenetSelected } = useCalendarStore();
   const [lastView, setLastView] = useState<string | null>(
-    localStorage.getItem("lastView") || ""
+    localStorage.getItem("lastView") || null
   );
   const eventStyleGetter = (
     event: any,

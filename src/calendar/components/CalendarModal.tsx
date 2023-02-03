@@ -63,7 +63,7 @@ function CalendarModal() {
       console.log("Error en fechas");
       return;
     }
-    if (formValues.title.length <= 0) return;
+    if (formValues?.title?.length <= 0) return;
     await startSavingEvent(formValues);
     closeDateModal();
     setFormSubmitted(false);
@@ -71,7 +71,7 @@ function CalendarModal() {
 
   const titleClass = useMemo(() => {
     if (!formSubmitted) return "";
-    return formValues.title.length > 0 ? "is-valid" : "is-invalid";
+    return formValues?.title.length > 0 ? "is-valid" : "is-invalid";
   }, [formValues.title, formSubmitted]);
 
   useEffect(() => {
@@ -129,7 +129,7 @@ function CalendarModal() {
             placeholder="Título del evento"
             name="title"
             autoComplete="off"
-            value={formValues.title}
+            value={formValues?.title}
             onChange={onInputChange}
           />
           <small id="emailHelp" className="form-text text-muted">

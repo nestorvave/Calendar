@@ -2,18 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import { addHours } from "date-fns";
 
 export interface IUiInitialState {
-  events: {
-    _id?: number;
-    title: string;
-    notes: string;
-    start: Date;
-    end: Date;
-    bgColor: string;
-    user: {
-      _id: string;
-      name: string;
-    };
-  }[];
+  events: any;
   activeEvent: {
     _id?: number;
     title: string;
@@ -27,20 +16,35 @@ export interface IUiInitialState {
     };
   } | null;
 }
-const tempEvent = {
-  _id: new Date().getTime(),
-  title: "Cumple hoy",
-  notes: "hay que comprar",
-  start: new Date(),
-  end: addHours(new Date(), 2),
-  bgColor: "#fafafa",
-  user: {
-    _id: "123",
-    name: "Nestor",
+
+const tempEvent = [
+  {
+    _id: new Date().getTime(),
+    title: "Cumple hoy",
+    notes: "hay que comprar",
+    start: new Date(),
+    end: addHours(new Date(), 2),
+    bgColor: "#fafafa",
+    user: {
+      _id: "123",
+      name: "Nestor",
+    },
   },
-};
+  {
+    _id: new Date().getTime(),
+    title: "Cumple hoy",
+    notes: "hay que comprar",
+    start: new Date(),
+    end: addHours(new Date(), 2),
+    bgColor: "#fafafa",
+    user: {
+      _id: "123",
+      name: "Nestor",
+    },
+  },
+];
 const initialState: IUiInitialState = {
-  events: [tempEvent],
+  events: tempEvent,
   activeEvent: null,
 };
 export const calendarSlice = createSlice({

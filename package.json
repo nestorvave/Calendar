@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.1",
-    "@types/react-big-calendar": "^0.38.3",
+    "@types/react-big-calendar": "^0.38.4",
     "@types/react-datepicker": "^4.8.0",
     "@types/react-modal": "^3.13.1",
     "date-fns": "^2.29.3",
